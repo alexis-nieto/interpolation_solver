@@ -330,7 +330,7 @@ def solver_integration_estimated_value(option: int, f: str, a: float, b: float, 
         
         # Simpson 1/3 (Multiple Application)
 
-        n = int(input("\nNúmero de intervalos inicial? "))
+        n = get_int("\nNúmero de intervalos inicial? ")
 
         h = (b - a)/n
 
@@ -352,9 +352,9 @@ def solver_integration_estimated_value(option: int, f: str, a: float, b: float, 
         
         # Simpson 1/3 (Multiple Application AND Iterative)
 
-        error = float(input("\nError? (Formato: 0.01 = 0.01%) "))
+        error = get_float("\nError? (Formato: 0.01 = 0.01%) ")
 
-        n = int(input("\nNúmero de intervalos inicial? "))
+        n = get_int("\nNúmero de intervalos inicial? ")
 
         original_n = n
 

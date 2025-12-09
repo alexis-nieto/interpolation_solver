@@ -72,7 +72,7 @@ def menu_integration():
         clear_screen()
         print_menu_integration()
         print("")
-        option = int(input("? "))
+        option = get_int("? ")
         clear_screen()
 
         if option == 0:
