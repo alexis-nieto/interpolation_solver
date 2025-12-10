@@ -1,7 +1,7 @@
 import sys
 import os
 from time import sleep
-from solver import solver_differentiation, solver_integration
+from solver import solver_newton#, solver_lagrange
 from utils import get_int
 
 
@@ -33,22 +33,22 @@ def menu_main():
 
         elif option == 1:
 
-            menu_differentiation()
+            menu_newton()
 
         elif option == 2:
 
-           menu_integration()
+           menu_lagrange()
 
         else:
             print("\nOpción no válida, intente de nuevo...\n")
             sleep(1)
 
 
-def menu_differentiation():
+def menu_newton():
 
     while True:
         clear_screen()
-        print_menu_differentiation()
+        print_menu_newton()
         print("")
         option = get_int("? ")
         clear_screen()
@@ -56,8 +56,8 @@ def menu_differentiation():
         if option == 0:
             break
 
-        elif option >= 1 and option <= 24:
-            solver_differentiation(option)
+        elif option >= 1 and option <= 2:
+            solver_newton(option)
             print("\nPresiona Enter para ir al menu anterior...")
             input()
             
@@ -66,20 +66,20 @@ def menu_differentiation():
             sleep(1)
 
 
-def menu_integration():
+def menu_lagrange():
 
     while True:
         clear_screen()
-        print_menu_integration()
+        print_menu_lagrange()
         print("")
-        option = int(input("? "))
+        option = get_int("? ")
         clear_screen()
 
         if option == 0:
             break
 
-        elif option >= 1 and option <= 7:
-            solver_integration(option)
+        elif option >= 1 and option <= 2:
+            solver_lagrange(option)
             print("\nPresiona Enter para ir al menu anterior...")
             input()
 
@@ -92,73 +92,29 @@ def print_menu_main():
     print(f"{indent(2)}== Menu ==")
     print("")
 
-    print("• 1. Diferenciación Numérica")
-    print("• 2. Integración Numérica")
-    
-    print("• 0. Salir")
+    print("• 1. INTERPOLACIÓN POLINOMIAL DE NEWTON EN DIFERENCIAS DIVIDIDAS")
+    print("• 2. POLINOMIOS DE INTERPOLACIÓN DE LAGRANGE")
+    print("• 0. SALIR")
 
 
-def print_menu_differentiation():
+def print_menu_newton():
 
-    print(f"{indent(2)}== Diferenciación Numérica ==")
+    print(f"{indent(2)}== INTERPOLACIÓN POLINOMIAL DE NEWTON EN DIFERENCIAS DIVIDIDAS ==")
     print("")
 
-    print("• Fórmulas de diferencias finitas divididas hacia adelante:")
-    print(f"{indent(2)}• Primera Derivada:")
-    print(f"{indent(4)}• 1.  Error O(h)")
-    print(f"{indent(4)}• 2.  Error O(h²)")
-    print(f"{indent(2)}• Segunda Derivada:")
-    print(f"{indent(4)}• 3.  Error O(h)")
-    print(f"{indent(4)}• 4.  Error O(h²)")
-    print(f"{indent(2)}• Tercera Derivada:")
-    print(f"{indent(4)}• 5.  Error O(h)")
-    print(f"{indent(4)}• 6.  Error O(h²)")
-    print(f"{indent(2)}• Cuarta Derivada:")
-    print(f"{indent(4)}• 7.  Error O(h)")
-    print(f"{indent(4)}• 8.  Error O(h²)")
-
-    print("• Fórmulas de diferencias finitas divididas hacia atrás:")
-    print(f"{indent(2)}• Primera Derivada:")
-    print(f"{indent(4)}• 9.  Error O(h)")
-    print(f"{indent(4)}• 10. Error O(h²)")
-    print(f"{indent(2)}• Segunda Derivada:")
-    print(f"{indent(4)}• 11. Error O(h)")
-    print(f"{indent(4)}• 12. Error O(h²)")
-    print(f"{indent(2)}• Tercera Derivada:")
-    print(f"{indent(4)}• 13. Error O(h)")
-    print(f"{indent(4)}• 14. Error O(h²)")
-    print(f"{indent(2)}• Cuarta Derivada:")
-    print(f"{indent(4)}• 15. Error O(h)")
-    print(f"{indent(4)}• 16. Error O(h²)")
-
-    print("• Fórmulas de diferencias finitas divididas centradas:")
-    print(f"{indent(2)}• Primera Derivada:")
-    print(f"{indent(4)}• 17. Error O(h²)")
-    print(f"{indent(4)}• 18. Error O(h⁴)")
-    print(f"{indent(2)}• Segunda Derivada:")
-    print(f"{indent(4)}• 19. Error O(h²)")
-    print(f"{indent(4)}• 20. Error O(h⁴)")
-    print(f"{indent(2)}• Tercera Derivada:")
-    print(f"{indent(4)}• 21. Error O(h²)")
-    print(f"{indent(4)}• 22. Error O(h⁴)")
-    print(f"{indent(2)}• Cuarta Derivada:")
-    print(f"{indent(4)}• 23. Error O(h²)")
-    print(f"{indent(4)}• 24. Error O(h⁴)")
+    print("• INTERPOLACIÓN POLINOMIAL DE NEWTON EN DIFERENCIAS DIVIDIDAS")
+    print(f"{indent(4)}• 1.  Interpolación Lineal")
+    print(f"{indent(4)}• 2.  Interpolación Cuadrática")
 
     print("• 0. Volver")
 
 
-def print_menu_integration():
+def print_menu_lagrange():
 
-    print(f"{indent(2)}== Integración Numérica ==")
+    print(f"{indent(2)}== POLINOMIOS DE INTERPOLACIÓN DE LAGRANGE ==")
     print("")
 
-    print("• 1. Regla del Trapecio")
-    print("• 2. Regla del Trapecio de Aplicación Múltiple")
-    print("• 3. Regla del Trapecio de Aplicación Múltiple Iterativa")
-    print("• 4. Regla de Simpson 1/3")
-    print("• 5. Regla de Simpson 1/3 de Aplicación Múltiple")
-    print("• 6. Regla de Simpson 1/3 de Aplicación Múltiple Iterativa")
-    print("• 7. Regla de Simpson 3/8")
+    print("• 1. Versión de Primer Grado")
+    print("• 2. Versión de Segundo Grado")
 
     print("• 0. Volver")

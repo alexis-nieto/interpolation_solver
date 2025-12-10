@@ -1,6 +1,5 @@
 from menus import *
-#from sympy import *
-#from tabulate import tabulate
+
 
 
 def main():
