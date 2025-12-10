@@ -1,7 +1,7 @@
 import sys
 import os
 from time import sleep
-from solver import solver_newton#, solver_lagrange
+from solver import solver_newton, solver_lagrange
 from utils import get_int
 
 
